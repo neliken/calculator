@@ -36,16 +36,12 @@ body {
     padding: 30px; /* ??? */
     box-sizing: border-box;
     border-radius: 30px;
- 
-    /* align-items: center; */
 }
 
 .details {
     width: 100%;
     padding-right: 30px;
     box-sizing: border-box;
-    /* flex-direction: row;
-    align-content: space-around; */
     display: grid;
     align-items: center;
 }
@@ -58,15 +54,30 @@ body {
     padding: 30px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
-input {
+input[type = "number"] {
     width: 100%;
-    background-color: var(--very-light-grayish-cyan);
-    border-color: var(--very-light-grayish-cyan);
+    height: 45px;
+    border: none;
     border-radius: 5px;
     font-size: 24px;
     font-weight: bold;
+    color: var(--light-grayish-cyan);
+    font-family: var(--font);
+    text-align: right;
+    padding: 10px 15px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: var(--very-light-grayish-cyan);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 label {
@@ -85,25 +96,89 @@ p {
     gap: 15px;
 }
 
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
 span {
     height: 40px;
-    width: 100px;
+    width: 105px;
     background-color: var(--very-dark-cyan);
     color: var(--white);
-    text-align: center;
+    display: inline-flex;
     border-radius: 5px;
+    justify-content: center; /* x axis */
+    align-items: center;  /* y axis */
+    cursor: pointer;
+}
+
+span:hover {
+    color: var(--very-dark-cyan);
+    background-color: var(--strong-cyan);
+}
+
+span.active {
+    color: var(--very-dark-cyan);
+    background-color: var(--strong-cyan);
+}
+
+input::placeholder {
+    font-size: 21px;
+}
+
+.result .amount {
+    display: grid; 
+    /* flex-direction: row;*/
+    grid-template-columns: 200px 150px;
+
+
+}
+
+.result .amount .person {
+    font-size: 15px;
+    color: var(--dark-grayish-cyan);
+}
+
+.result .amount .priceInfo {
+    font-size: 40px;
+    color: var(--strong-cyan);
+    justify-self: stretch;  /* y axis */
+
+    /* align-self: right; */
 }
 
 button {
     width: 100%;
     align-self: flex-end;
+    color: var(--very-dark-cyan);
     background-color: var(--strong-cyan);
     border-color: var(--strong-cyan);
     border-radius: 5px;
     height: 35px;
-    color: var(--very-dark-cyan);
     font-family: var(--font);
     font-size: 20px;
+    padding: 5px;
+    display: flex;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+button:hover {
+    color: var(--very-dark-cyan);
+    background-color: var(--strong-cyan);
+    border-color: var(--strong-cyan);
+}
+
+#bill {
+    background: url("./images/icon-dollar.svg") no-repeat left var(--very-light-grayish-cyan);
+    background-position-x: 15px;
+}
+
+#nrOfPeople {
+    background: url("./images/icon-person.svg") no-repeat left var(--very-light-grayish-cyan);
+    background-position-x: 15px;
 }
 
 
@@ -111,7 +186,7 @@ button {
 @media (min-width: 768px)  {
     .card {
         height: 450px;
-        width: 800px;
+        width: 850px;
         flex-direction: row;
     }
 }

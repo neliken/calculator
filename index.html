@@ -11,12 +11,12 @@
 <body>
   <div class="card">
     <div class="details">
-      <div>
+      <div class="section">
         <label for="bill">Bill</label> <br>
-        <input type="number" id="bill"> <br>
+        <input type="number" id="bill" value="0"> <br>
       </div>
 
-      <div>
+      <div class="section">
         <label for="">Select Tip %</label> <br>
         <div class="selectPercentTip">
           <span>5%</span>
@@ -24,25 +24,31 @@
           <span>15%</span>
           <span>25%</span>
           <span>50%</span>
-          <span>Custom</span>
+          <span><input type="number" placeholder="Custom"></span>
         </div>
       </div>
 
-     <div>
+     <div class="section">
         <label for="nrOfPeople">Number of People</label>
-        <input type="number" id="nrOfPeople">
+        <input type="number" id="nrOfPeople" value="0">
      </div>
     </div>
     <div class="result">
-      <div>
-        <p>Tip Amount</p>
-        <p class="tipAmount" id="tipAmount"></p>
+      <div class="amount">
+        <div>
+          <p>Tip Amount</p>
+          <p class="person">/ person</p>
+        </div>
+        <div class="priceInfo" id="tipAmount">$0.00</div>
       </div>
-      <div>
-        <p>Total</p>
-        <p class="price" id="price"></p>
+      <div class="amount">
+        <div>
+          <p>Total</p>
+          <p class="person">/ person</p>
+        </div>
+        <div class="priceInfo" id="price">$0.00</div>
       </div>
-      <button>RESET</button>
+      <button class="reset">RESET</button>
     </div>
   </div>
 </body>
