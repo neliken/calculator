@@ -1,0 +1,117 @@
+@import url('https://fonts.google.com/specimen/Space+Mono');
+ 
+:root {
+    --font-size: 24px;
+    --strong-cyan: hsl(172, 67%, 45%);
+    --very-dark-cyan: hsl(183, 100%, 15%);
+    --dark-grayish-cyan: hsl(186, 14%, 43%);
+    --grayish-cyan: hsl(184, 14%, 56%);
+    --light-grayish-cyan: hsl(185, 41%, 84%);
+    --very-light-grayish-cyan: hsl(189, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+    --font: 'Space Mono', monospace;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--light-grayish-cyan);
+    display: flex;
+    align-items: center;
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.card {
+    background-color: var(--white);
+    margin: auto;
+    display: flex;
+    height: 80%;
+    width: 80%;
+    flex-direction: column;
+    align-content: space-around;
+    padding: 30px; /* ??? */
+    box-sizing: border-box;
+    border-radius: 30px;
+ 
+    /* align-items: center; */
+}
+
+.details {
+    width: 100%;
+    padding-right: 30px;
+    box-sizing: border-box;
+    /* flex-direction: row;
+    align-content: space-around; */
+    display: grid;
+    align-items: center;
+}
+
+.result {
+    background-color: var(--very-dark-cyan);
+    border-radius: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    background-color: var(--very-light-grayish-cyan);
+    border-color: var(--very-light-grayish-cyan);
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+label {
+    color: var(--dark-grayish-cyan);
+} 
+
+p {
+    color: var(--white);
+}
+
+.selectPercentTip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    gap: 15px;
+}
+
+span {
+    height: 40px;
+    width: 100px;
+    background-color: var(--very-dark-cyan);
+    color: var(--white);
+    text-align: center;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    align-self: flex-end;
+    background-color: var(--strong-cyan);
+    border-color: var(--strong-cyan);
+    border-radius: 5px;
+    height: 35px;
+    color: var(--very-dark-cyan);
+    font-family: var(--font);
+    font-size: 20px;
+}
+
+
+
+@media (min-width: 768px)  {
+    .card {
+        height: 450px;
+        width: 800px;
+        flex-direction: row;
+    }
+}
