@@ -29,6 +29,7 @@ body {
     background-color: var(--white);
     margin: auto;
     display: flex;
+    gap: 30px;
     height: 80%;
     width: 80%;
     flex-direction: column;
@@ -40,7 +41,7 @@ body {
 
 .details {
     width: 100%;
-    padding-right: 30px;
+    /* padding-right: 30px; */
     box-sizing: border-box;
     display: grid;
     align-items: center;
@@ -131,9 +132,8 @@ input::placeholder {
 .result .amount {
     display: grid; 
     /* flex-direction: row;*/
-    grid-template-columns: 200px 150px;
-
-
+    grid-template-columns: auto auto;
+    width: 100%;
 }
 
 .result .amount .person {
@@ -142,11 +142,16 @@ input::placeholder {
 }
 
 .result .amount .priceInfo {
-    font-size: 40px;
+    font-size: 45px;
+    font-weight: 700;
+    /* width: 100%; */
     color: var(--strong-cyan);
-    justify-self: stretch;  /* y axis */
+    align-self: center;
+    justify-self: end;
+}
 
-    /* align-self: right; */
+.result .amount .text {
+
 }
 
 button {
@@ -159,9 +164,9 @@ button {
     height: 35px;
     font-family: var(--font);
     font-size: 20px;
-    padding: 5px;
+    /* padding: 5px; */
     display: flex;
-    align-self: flex-end;
+    align-self: center;
     cursor: pointer;
 }
 
