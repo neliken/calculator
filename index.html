@@ -13,9 +13,8 @@
     <div class="details">
       <div class="section">
         <label for="bill">Bill</label> <br>
-        <input type="number" id="bill" value="0"> <br>
+        <input type="number" id="bill" placeholder="0"> <br>
       </div>
-
       <div class="section">
         <label for="">Select Tip %</label> <br>
         <div class="selectPercentTip">
@@ -24,13 +23,12 @@
           <span>15%</span>
           <span>25%</span>
           <span>50%</span>
-          <span><input type="number" placeholder="Custom"></span>
+          <span><input type="number" placeholder="Custom" id="customPercent"></span>
         </div>
       </div>
-
      <div class="section">
         <label for="nrOfPeople">Number of People</label>
-        <input type="number" id="nrOfPeople" value="0">
+        <input type="number" id="nrOfPeople" placeholder="0">
      </div>
     </div>
     <div class="result">
@@ -46,10 +44,13 @@
           <p>Total</p>
           <p class="person">/ person</p>
         </div>
-        <div class="priceInfo" id="price">$0.00</div>
+        <div class="priceInfo" id="totalPrice">$0.00</div>
       </div>
-      <button class="reset">RESET</button>
+     <div class="buttonWrapper">
+        <button class="reset">RESET</button>
+     </div>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>

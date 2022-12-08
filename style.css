@@ -41,7 +41,6 @@ body {
 
 .details {
     width: 100%;
-    /* padding-right: 30px; */
     box-sizing: border-box;
     display: grid;
     align-items: center;
@@ -55,7 +54,6 @@ body {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 input[type = "number"] {
@@ -65,14 +63,21 @@ input[type = "number"] {
     border-radius: 5px;
     font-size: 24px;
     font-weight: bold;
-    color: var(--light-grayish-cyan);
     font-family: var(--font);
+    color: var(--very-dark-cyan);
     text-align: right;
     padding: 10px 15px;
     margin: 5px 0;
     box-sizing: border-box;
     cursor: pointer;
     background-color: var(--very-light-grayish-cyan);
+}
+
+input[type = "number"]::placeholder {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--font);
+    color: var(--light-grayish-cyan);
 }
 
 input::-webkit-outer-spin-button,
@@ -115,9 +120,14 @@ span {
     cursor: pointer;
 }
 
+span:nth-child(3) {
+    background: var(--strong-cyan);
+    color: var(--very-dark-cyan);
+}
+
 span:hover {
     color: var(--very-dark-cyan);
-    background-color: var(--strong-cyan);
+    background-color: var(--light-grayish-cyan);
 }
 
 span.active {
@@ -131,7 +141,6 @@ input::placeholder {
 
 .result .amount {
     display: grid; 
-    /* flex-direction: row;*/
     grid-template-columns: auto auto;
     width: 100%;
 }
@@ -144,29 +153,21 @@ input::placeholder {
 .result .amount .priceInfo {
     font-size: 45px;
     font-weight: 700;
-    /* width: 100%; */
     color: var(--strong-cyan);
     align-self: center;
     justify-self: end;
 }
 
-.result .amount .text {
-
-}
-
 button {
     width: 100%;
-    align-self: flex-end;
     color: var(--very-dark-cyan);
     background-color: var(--strong-cyan);
-    border-color: var(--strong-cyan);
+    border: none;
     border-radius: 5px;
-    height: 35px;
+    height: 37px;
     font-family: var(--font);
     font-size: 20px;
-    /* padding: 5px; */
-    display: flex;
-    align-self: center;
+    font-weight: 700;
     cursor: pointer;
 }
 
@@ -185,8 +186,6 @@ button:hover {
     background: url("./images/icon-person.svg") no-repeat left var(--very-light-grayish-cyan);
     background-position-x: 15px;
 }
-
-
 
 @media (min-width: 768px)  {
     .card {
