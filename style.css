@@ -120,11 +120,6 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
-.card .details .section .selectPercentTip span:nth-child(3) {
-    background: var(--strong-cyan);
-    color: var(--very-dark-cyan);
-}
-
 .card .details .section .selectPercentTip span:hover {
     color: var(--very-dark-cyan);
     background-color: var(--light-grayish-cyan);

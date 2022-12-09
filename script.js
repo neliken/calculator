@@ -23,11 +23,31 @@ class CalculatorHandler {
         return document.getElementById(id);
     }
 
+    // selectTip() {
+    //     this.spans = document.querySelectorAll("span");
+
+    //     this.spans.forEach( span => {
+    //         span.addEventListener('click', () => {
+    //             this.deleteActive(this.spans);
+    //             span.classList.add('active');
+    //             let value =  (span.innerHTML).replace("%", '')
+    //             this.customPercent = parseInt(value);
+    //         })
+    //     })
+    // }
+
+    deleteActive(spans) {
+        spans.forEach( span => {
+            span.classList.remove('active');
+        })
+    }
+
     getInputs(){
         this.bill = this.getElemById("bill");
         this.customPercent = this.getElemById("customPercent");
         this.nrOfPeople = this.getElemById("nrOfPeople");
         this.tipAmount = this.getElemById('tipAmount');
+        // this.selectTip();
         this.totalPrice = this.getElemById('totalPrice');
     }
 
@@ -59,10 +79,7 @@ class CalculatorHandler {
             this.setUI();
         }));         
     }
-    // register events 
-    // call functions with callback
-    // once the callback is called collect values and update the UI
-    
+
     callTipAmountCalculator(t) {
         return t.calculatorService.tipAmountCalculator(t.billValue, t.customPercentValue, t.nrOfPeopleValue);
     }
@@ -74,4 +91,16 @@ class CalculatorHandler {
 
 const calculatorHandler = new CalculatorHandler(calculator);
 
-calculatorHandler.collectValues();
+class CalculatorUI {
+    constructor(calculatorHandlerService) {
+        this.calculatorHandlerService = calculatorHandlerService;
+    }
+    
+    changeInputs() {
+        this.calculatorHandlerService.collectValues();
+    }
+}
+
+const calculatorUI = new CalculatorUI(calculatorHandler);
+
+calculatorUI.changeInputs();
