@@ -12,7 +12,7 @@ class Calculator {
 
 const calculator = new Calculator();
 
-class CalculatorUI {
+class CalculatorHandler {
     constructor(calculatorService){
         this.calculatorService = calculatorService;
         this.tipAmountValue = null;
@@ -37,18 +37,11 @@ class CalculatorUI {
         this.nrOfPeopleValue = parseFloat(this.nrOfPeople.value);
     }
 
-    callFunctions(callback) {
-            this.tipAmountValue = parseFloat(this.callTipAmountCalculator());
-            this.totalPriceValue = parseFloat(this.callTotalCalculator());
+    callFunctions(callback, t) {
+        if(callback) {
+            return parseFloat(callback(t));
+        }
     }
-
-    // callFunctions(callback) {
-    //     if(callback) {
-    //         this.tipAmountValue = parseFloat(this.callTipAmountCalculator());
-    //         this.totalPriceValue = parseFloat(this.callTotalCalculator());
-    //     }
-        
-    // }
 
     setUI() {
         this.tipAmount.innerHTML = "$" + this.tipAmountValue;
@@ -60,36 +53,25 @@ class CalculatorUI {
 
         eventHandler.forEach( event => event.addEventListener('change', () => {
             this.setValues();
-            // this.setValues(this.callFunctions());
-            this.callFunctions();
+            let t = this;
+            this.tipAmountValue = this.callFunctions(t.callTipAmountCalculator, t);
+            this.totalPriceValue = this.callFunctions(t.callTotalCalculator, t);
             this.setUI();
         }));         
     }
-
     // register events 
     // call functions with callback
     // once the callback is called collect values and update the UI
     
-    callTipAmountCalculator() {
-        return this.calculatorService.tipAmountCalculator(this.billValue, this.customPercentValue, this.nrOfPeopleValue);
+    callTipAmountCalculator(t) {
+        return t.calculatorService.tipAmountCalculator(t.billValue, t.customPercentValue, t.nrOfPeopleValue);
     }
 
-    callTotalCalculator() {
-        return this.calculatorService.totalCalculator(this.billValue, this.nrOfPeopleValue, this.tipAmountValue);
+    callTotalCalculator(t) {
+        return t.calculatorService.totalCalculator(t.billValue, t.nrOfPeopleValue, t.tipAmountValue);
     }
 }
 
-const calculatorUI = new CalculatorUI(calculator);
+const calculatorHandler = new CalculatorHandler(calculator);
 
-calculatorUI.collectValues();
-
-// class CalculatorUIHandler {
-//     changeAmount(){
-
-//     }
-
-//     changeTotal(){
-
-//     }
-// }
-
+calculatorHandler.collectValues();

@@ -39,14 +39,14 @@ body {
     border-radius: 30px;
 }
 
-.details {
+.card .details {
     width: 100%;
     box-sizing: border-box;
     display: grid;
     align-items: center;
 }
 
-.result {
+.card .result {
     background-color: var(--very-dark-cyan);
     border-radius: 15px;
     width: 100%;
@@ -56,7 +56,7 @@ body {
     flex-direction: column;
 }
 
-input[type = "number"] {
+.card .details .section input[type = "number"] {
     width: 100%;
     height: 45px;
     border: none;
@@ -73,7 +73,7 @@ input[type = "number"] {
     background-color: var(--very-light-grayish-cyan);
 }
 
-input[type = "number"]::placeholder {
+.card .details .section input[type = "number"]::placeholder {
     font-size: 24px;
     font-weight: bold;
     font-family: var(--font);
@@ -86,15 +86,15 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-label {
+.card .details .section label {
     color: var(--dark-grayish-cyan);
 } 
 
-p {
+.card .amount .text p {
     color: var(--white);
 }
 
-.selectPercentTip {
+.card .details .section .selectPercentTip {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -102,13 +102,13 @@ p {
     gap: 15px;
 }
 
-.section {
+.card .details .section {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
 }
 
-span {
+.card .details .section .selectPercentTip span {
     height: 40px;
     width: 105px;
     background-color: var(--very-dark-cyan);
@@ -120,37 +120,37 @@ span {
     cursor: pointer;
 }
 
-span:nth-child(3) {
+.card .details .section .selectPercentTip span:nth-child(3) {
     background: var(--strong-cyan);
     color: var(--very-dark-cyan);
 }
 
-span:hover {
+.card .details .section .selectPercentTip span:hover {
     color: var(--very-dark-cyan);
     background-color: var(--light-grayish-cyan);
 }
 
-span.active {
+.card .details .section .selectPercentTip span.active {
     color: var(--very-dark-cyan);
     background-color: var(--strong-cyan);
 }
 
-input::placeholder {
+.card .details .section input::placeholder {
     font-size: 21px;
 }
 
-.result .amount {
+.card .result .amount {
     display: grid; 
     grid-template-columns: auto auto;
     width: 100%;
 }
 
-.result .amount .person {
+.card .result .amount .person {
     font-size: 15px;
     color: var(--dark-grayish-cyan);
 }
 
-.result .amount .priceInfo {
+.card .result .amount .priceInfo {
     font-size: 45px;
     font-weight: 700;
     color: var(--strong-cyan);
@@ -158,7 +158,7 @@ input::placeholder {
     justify-self: end;
 }
 
-button {
+.card .result .buttonWrapper button {
     width: 100%;
     color: var(--very-dark-cyan);
     background-color: var(--strong-cyan);
@@ -171,18 +171,18 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.card .result .buttonWrapper button:hover {
     color: var(--very-dark-cyan);
     background-color: var(--strong-cyan);
     border-color: var(--strong-cyan);
 }
 
-#bill {
+.card .details .section #bill {
     background: url("./images/icon-dollar.svg") no-repeat left var(--very-light-grayish-cyan);
     background-position-x: 15px;
 }
 
-#nrOfPeople {
+.card .details .section #nrOfPeople {
     background: url("./images/icon-person.svg") no-repeat left var(--very-light-grayish-cyan);
     background-position-x: 15px;
 }
