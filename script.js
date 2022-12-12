@@ -12,10 +12,9 @@ class Calculator {
 
 const calculator = new Calculator();
 
-class CalculatorHandler {
-    constructor(calculatorService){
+class CalculatorUI {
+    constructor(calculatorService) {
         this.calculatorService = calculatorService;
-        this.tipAmountValue = null;
         this.getInputs();
     }
 
@@ -23,18 +22,13 @@ class CalculatorHandler {
         return document.getElementById(id);
     }
 
-    // selectTip() {
-    //     this.spans = document.querySelectorAll("span");
-
-    //     this.spans.forEach( span => {
-    //         span.addEventListener('click', () => {
-    //             this.deleteActive(this.spans);
-    //             span.classList.add('active');
-    //             let value =  (span.innerHTML).replace("%", '')
-    //             this.customPercent = parseInt(value);
-    //         })
-    //     })
-    // }
+    selectTip(span) {
+        this.deleteActive(this.spans);
+        span.classList.add('active');
+        this.customPercent.value = '';
+        let value =  (span.innerHTML).replace("%", '')
+        this.customPercentValue = parseInt(value);
+    }
 
     deleteActive(spans) {
         spans.forEach( span => {
@@ -47,14 +41,34 @@ class CalculatorHandler {
         this.customPercent = this.getElemById("customPercent");
         this.nrOfPeople = this.getElemById("nrOfPeople");
         this.tipAmount = this.getElemById('tipAmount');
-        // this.selectTip();
         this.totalPrice = this.getElemById('totalPrice');
+        this.spans = document.querySelectorAll("span");
     }
 
     setValues() {
         this.billValue = parseFloat(this.bill.value);
-        this.customPercentValue = parseFloat(this.customPercent.value);
         this.nrOfPeopleValue = parseFloat(this.nrOfPeople.value);
+        this.customPercentValue = parseFloat(this.customPercent.value);
+    } 
+
+    setUI() {
+        this.tipAmount.innerHTML = "$" + this.tipAmountValue;
+        this.totalPrice.innerHTML = "$" + this.totalPriceValue;
+    }
+
+    checkValidInput() {
+        if(!this.billValue) {
+            this.bill.style.borderColor = 'red';
+        }
+    }
+
+    reset() {
+        this.bill.value = '';
+        this.nrOfPeople.value = '';
+        this.customPercent.value = '';
+        this.tipAmount.innerHTML = '$0.00';
+        this.totalPrice.innerHTML = '$0.00';
+        this.deleteActive(this.spans);
     }
 
     callFunctions(callback, t) {
@@ -63,21 +77,29 @@ class CalculatorHandler {
         }
     }
 
-    setUI() {
-        this.tipAmount.innerHTML = "$" + this.tipAmountValue;
-        this.totalPrice.innerHTML = "$" + this.totalPriceValue;
-    }
-
     collectValues() {
         const eventHandler = [this.bill, this.customPercent, this.nrOfPeople];
 
         eventHandler.forEach( event => event.addEventListener('change', () => {
             this.setValues();
             let t = this;
-            this.tipAmountValue = this.callFunctions(t.callTipAmountCalculator, t);
-            this.totalPriceValue = this.callFunctions(t.callTotalCalculator, t);
-            this.setUI();
-        }));         
+            if(this.billValue && this.customPercentValue && this.nrOfPeopleValue) {
+                this.tipAmountValue = this.callFunctions(t.callTipAmountCalculator, t);
+                this.totalPriceValue = this.callFunctions(t.callTotalCalculator, t);
+                this.setUI();
+            }
+        }));  
+
+        this.spans.forEach( span => span.addEventListener('click', () => {
+            this.setValues();
+            this.selectTip(span);
+            let t = this;
+            if(this.billValue && this.customPercentValue && this.nrOfPeopleValue) {
+                this.tipAmountValue = this.callFunctions(t.callTipAmountCalculator, t);
+                this.totalPriceValue = this.callFunctions(t.callTotalCalculator, t);
+                this.setUI();
+            }
+        }))
     }
 
     callTipAmountCalculator(t) {
@@ -89,18 +111,6 @@ class CalculatorHandler {
     }
 }
 
-const calculatorHandler = new CalculatorHandler(calculator);
+const calculatorUI = new CalculatorUI(calculator);
 
-class CalculatorUI {
-    constructor(calculatorHandlerService) {
-        this.calculatorHandlerService = calculatorHandlerService;
-    }
-    
-    changeInputs() {
-        this.calculatorHandlerService.collectValues();
-    }
-}
-
-const calculatorUI = new CalculatorUI(calculatorHandler);
-
-calculatorUI.changeInputs();
+calculatorUI.collectValues();
