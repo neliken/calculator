@@ -153,6 +153,12 @@ input::-webkit-inner-spin-button {
     justify-self: end;
 }
 
+.card .result .buttonWrapper {
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+}
+
 .card .result .buttonWrapper button {
     width: 100%;
     color: var(--very-dark-cyan);
