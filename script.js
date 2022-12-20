@@ -12,10 +12,9 @@ class Calculator {
 
 const calculator = new Calculator();
 
-class CalculatorUI extends Calculator{
-    constructor() {
-        super()
-        // this.calculatorService = calculatorService;
+class CalculatorUI {
+    constructor(calculatorService) {
+        this.calculatorService = calculatorService;
         this.getInputs();
     }
 
@@ -79,7 +78,6 @@ class CalculatorUI extends Calculator{
     }
 
     collectValues() {
-        console.log(this);
         const eventHandler = [this.bill, this.customPercent, this.nrOfPeople];
 
         eventHandler.forEach( event => event.addEventListener('change', () => {
@@ -97,7 +95,7 @@ class CalculatorUI extends Calculator{
             this.selectTip(span);
             let t = this;
             if(this.billValue && this.customPercentValue && this.nrOfPeopleValue) {
-                this.tipAmountValue = this.callFunctions(this.callTipAmountCalculator, t);
+                this.tipAmountValue = this.callFunctions(t.callTipAmountCalculator, t);
                 this.totalPriceValue = this.callFunctions(t.callTotalCalculator, t);
                 this.setUI();
             }
@@ -105,11 +103,11 @@ class CalculatorUI extends Calculator{
     }
 
     callTipAmountCalculator(t) {
-        return this.tipAmountCalculator(t.billValue, t.customPercentValue, t.nrOfPeopleValue);
+        return t.calculatorService.tipAmountCalculator(t.billValue, t.customPercentValue, t.nrOfPeopleValue);
     }
 
     callTotalCalculator(t) {
-        return this.totalCalculator(t.billValue, t.nrOfPeopleValue, t.tipAmountValue);
+        return t.calculatorService.totalCalculator(t.billValue, t.nrOfPeopleValue, t.tipAmountValue);
     }
 }
 
